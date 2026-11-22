@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import GoogleReviewsBadge from './GoogleReviewsBadge';
 
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '67e3c423-33af-4ddf-bea0-7e639b6ebb7b';
+
 export default function DemoBookingSection() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -16,7 +18,7 @@ export default function DemoBookingSection() {
     e.preventDefault();
     setSubmitting(true);
 
-    const web3Key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
+    const web3Key = WEB3FORMS_ACCESS_KEY;
     
     const payload = {
       name: formData.name,
@@ -30,31 +32,31 @@ export default function DemoBookingSection() {
     let delivered = false;
 
     // 1. Primary Cloud Form API: Web3Forms (delivers directly to enquiry@riituinstitution.com)
-    if (web3Key && web3Key !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+    if (web3Key) {
       try {
-        const w3Res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            access_key: web3Key,
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email || 'Not provided',
-            cohort: formData.cohort,
-            area: formData.area || 'Kharghar / Navi Mumbai',
-            subject: `New Free Demo Booking: ${formData.name} [${formData.cohort.toUpperCase()}]`,
-            from_name: 'Riitu Institution Portal',
-            message: `Free Demo Class Booking Details:
+        const formDataPayload = new FormData();
+        formDataPayload.append('access_key', web3Key);
+        formDataPayload.append('name', formData.name);
+        formDataPayload.append('phone', formData.phone);
+        formDataPayload.append('email', formData.email || 'Not provided');
+        formDataPayload.append('cohort', formData.cohort);
+        formDataPayload.append('area', formData.area || 'Kharghar / Navi Mumbai');
+        formDataPayload.append('subject', `New Free Demo Booking: ${formData.name} [${formData.cohort.toUpperCase()}]`);
+        formDataPayload.append('from_name', 'Riitu Institution Admissions');
+        if (formData.email) {
+          formDataPayload.append('replyto', formData.email);
+        }
+        formDataPayload.append('message', `Free Demo Class Booking Details:
 • Student Name: ${formData.name}
 • Mobile Contact: ${formData.phone}
 • Target Cohort: ${formData.cohort}
 • Area / Location: ${formData.area || 'Kharghar / Navi Mumbai'}
 • Email Address: ${formData.email || 'Not provided'}
-• Submitted Via: Riitu Institution Official Web Portal`
-          })
+• Submitted Via: Riitu Institution Official Web Portal (enquiry@riituinstitution.com)`);
+
+        const w3Res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formDataPayload
         });
 
         if (w3Res.ok) {
@@ -304,10 +306,17 @@ export default function DemoBookingSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 font-sans">
+                  {/* Anti-spam Honeypot for Web3Forms */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+                  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+                  <input type="hidden" name="from_name" value="Riitu Institution Admissions" />
+                  <input type="hidden" name="subject" value={`New Free Demo Booking: ${formData.name || 'Student'} [${formData.cohort.toUpperCase()}]`} />
+
                   <div>
                     <label className="block text-xs font-bold text-slate-800 mb-1">Student Full Name *</label>
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -321,6 +330,7 @@ export default function DemoBookingSection() {
                       <label className="block text-xs font-bold text-slate-800 mb-1">Mobile Contact *</label>
                       <input
                         type="tel"
+                        name="phone"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -331,6 +341,7 @@ export default function DemoBookingSection() {
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">Target Cohort *</label>
                       <select
+                        name="cohort"
                         required
                         value={formData.cohort}
                         onChange={(e) => setFormData({ ...formData, cohort: e.target.value })}
@@ -353,6 +364,7 @@ export default function DemoBookingSection() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. student@gmail.com"
@@ -365,6 +377,7 @@ export default function DemoBookingSection() {
                       </label>
                       <input
                         type="text"
+                        name="area"
                         value={formData.area}
                         onChange={(e) => setFormData({ ...formData, area: e.target.value })}
                         placeholder="e.g. Kharghar Sec 12, Panvel"
