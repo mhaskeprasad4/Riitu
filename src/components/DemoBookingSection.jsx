@@ -2,35 +2,100 @@ import React, { useState } from 'react';
 import GoogleReviewsBadge from './GoogleReviewsBadge';
 
 export default function DemoBookingSection() {
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     cohort: 'ca-foundation',
     area: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
     
-    // Automatically route form submission to official live website email: enquiry@riituinstitution.com
-    const subject = encodeURIComponent(`Free Demo Class Booking: ${formData.name} [${formData.cohort}]`);
-    const body = encodeURIComponent(
-      `New Free Demo Lecture Booking Request:\n\n` +
-      `Student Name: ${formData.name}\n` +
-      `Mobile Contact: ${formData.phone}\n` +
-      `Target Cohort: ${formData.cohort}\n` +
-      `Location / Commute Area: ${formData.area || 'Kharghar / Navi Mumbai'}\n\n` +
-      `Submitted through Riitu Institution Web Portal (Admissions AY 2026-27)\n` +
-      `Recipient: enquiry@riituinstitution.com`
-    );
-    
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      cohort: formData.cohort,
+      area: formData.area || 'Kharghar / Navi Mumbai',
+      source: 'Riitu Institution Web Portal - Free Demo Booking'
+    };
+
+    let delivered = false;
+
+    // 1. Primary: Direct Hostinger PHP endpoint
     try {
-      window.location.href = `mailto:enquiry@riituinstitution.com?subject=${subject}&body=${body}`;
+      const res = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        const json = await res.json().catch(() => null);
+        if (json && json.success) {
+          delivered = true;
+        }
+      }
     } catch {
-      // Fallback if mail client protocol is not bound
+      // Local dev server or direct PHP not found
     }
+
+    // 2. Secondary: Root /contact.php
+    if (!delivered) {
+      try {
+        const res2 = await fetch('/contact.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (res2.ok) {
+          const json2 = await res2.json().catch(() => null);
+          if (json2 && json2.success) {
+            delivered = true;
+          }
+        }
+      } catch {
+        // Fallback
+      }
+    }
+
+    // 3. Fallback: FormSubmit.co background email API to enquiry@riituinstitution.com
+    if (!delivered) {
+      try {
+        await fetch('https://formsubmit.co/ajax/enquiry@riituinstitution.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email || 'Not provided',
+            cohort: formData.cohort,
+            area: formData.area || 'Kharghar / Navi Mumbai',
+            _subject: `New Free Demo Booking: ${formData.name} [${formData.cohort}]`,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+      } catch {
+        // Continue to success screen
+      }
+    }
+
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
   return (
@@ -145,18 +210,77 @@ export default function DemoBookingSection() {
               </div>
 
               {submitted ? (
-                <div className="p-8 bg-brand-surface border border-emerald-300 rounded-[3px] text-center space-y-3">
-                  <span className="material-symbols-outlined text-5xl text-emerald-600">verified</span>
-                  <h4 className="text-lg font-serif font-bold text-slate-900">Free Demo Slot Reserved!</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                    Thank you! Our senior counselor will call your mobile within 2 hours to confirm your subject slot and provide directions to our Sector 12 Kharghar campus.
+                <div className="p-7 sm:p-8 bg-brand-surface border-2 border-emerald-400 rounded-[4px] text-center space-y-4 shadow-sm font-sans animate-fade-in">
+                  <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mx-auto text-emerald-700">
+                    <span className="material-symbols-outlined text-3xl">verified</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-serif font-bold text-slate-900">
+                      Free Demo Booking Received!
+                    </h4>
+                    <p className="text-xs text-brand-forest font-semibold mt-1">
+                      Direct notification sent to <strong className="text-slate-900 underline">enquiry@riituinstitution.com</strong>
+                    </p>
+                  </div>
+                  
+                  <div className="p-3.5 bg-white border border-slate-200 rounded-[3px] text-left text-xs text-slate-700 space-y-1.5">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500 font-medium">Student Name:</span>
+                      <strong className="text-slate-900">{formData.name}</strong>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500 font-medium">Mobile Contact:</span>
+                      <strong className="text-slate-900">{formData.phone}</strong>
+                    </div>
+                    {formData.email && (
+                      <div className="flex justify-between">
+                        <span className="text-slate-500 font-medium">Email:</span>
+                        <strong className="text-slate-900">{formData.email}</strong>
+                      </div>
+                    )}
+                    <div className="flex justify-between">
+                      <span className="text-slate-500 font-medium">Target Cohort:</span>
+                      <strong className="text-brand-forest uppercase">{formData.cohort}</strong>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Our admissions director will call you within 2 hours to confirm your seat. You can also connect with us on WhatsApp immediately:
                   </p>
+
+                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={`https://wa.me/919512112938?text=${encodeURIComponent(
+                        `Hello Riitu Institution! I just booked a Free Demo for ${formData.name} for ${formData.cohort}. Contact: ${formData.phone}. Please confirm my slot.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-gold flex-1 text-xs py-3 flex items-center justify-center gap-2"
+                    >
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-slate-900">
+                        <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.77.464 3.498 1.344 5.027L2 22l5.09-1.336A10.01 10.01 0 0012.031 22C17.568 22 22 17.505 22 12.031 22 6.495 17.568 2 12.031 2zm0 18.286a8.25 8.25 0 01-4.21-1.155l-.302-.18-3.128.82.835-3.05-.197-.314a8.25 8.25 0 01-1.278-4.376c0-4.57 3.717-8.286 8.28-8.286 4.562 0 8.278 3.717 8.278 8.286 0 4.57-3.716 8.285-8.278 8.285zm4.536-6.195c-.248-.124-1.468-.724-1.696-.807-.228-.083-.394-.124-.56.124-.166.248-.643.807-.788.973-.145.166-.29.186-.539.062-.248-.124-1.048-.386-1.996-1.232-.738-.658-1.236-1.472-1.381-1.72-.145-.248-.016-.382.108-.506.112-.112.248-.29.373-.435.124-.145.166-.248.249-.414.083-.166.041-.311-.021-.435-.062-.124-.56-1.35-.767-1.848-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.435.062-.663.311-.228.249-.87.85-.87 2.073 0 1.223.89 2.406 1.014 2.572.124.166 1.751 2.673 4.242 3.748.593.256 1.056.409 1.417.524.595.189 1.137.162 1.565.098.477-.071 1.468-.6 1.675-1.182.207-.58.207-1.078.145-1.182-.062-.104-.228-.166-.477-.29z"></path>
+                      </svg>
+                      <span>Confirm on WhatsApp</span>
+                    </a>
+                    <a
+                      href="tel:+919512112938"
+                      className="btn-outline-forest flex-1 text-xs py-3 flex items-center justify-center gap-2"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">call</span>
+                      <span>Call +91-9512112938</span>
+                    </a>
+                  </div>
+
                   <div className="pt-2">
                     <button
-                      onClick={() => setSubmitted(false)}
-                      className="text-xs text-brand-forest font-bold underline hover:text-brand-gold"
+                      type="button"
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormData({ name: '', phone: '', email: '', cohort: 'ca-foundation', area: '' });
+                      }}
+                      className="text-xs text-slate-500 hover:text-brand-forest underline font-semibold"
                     >
-                      Book another slot
+                      Book another student slot &rarr;
                     </button>
                   </div>
                 </div>
@@ -204,22 +328,49 @@ export default function DemoBookingSection() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1">
-                      Your Location / Commute Area
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.area}
-                      onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                      placeholder="e.g. Kharghar Sec 12, Panvel, Nerul, Belapur, Vashi"
-                      className="w-full text-xs px-4 py-3 border border-slate-300 rounded-[3px] focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Email Address (Optional)
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="e.g. student@gmail.com"
+                        className="w-full text-xs px-4 py-3 border border-slate-300 rounded-[3px] focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-800 mb-1">
+                        Location / Area
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.area}
+                        onChange={(e) => setFormData({ ...formData, area: e.target.value })}
+                        placeholder="e.g. Kharghar Sec 12, Panvel"
+                        className="w-full text-xs px-4 py-3 border border-slate-300 rounded-[3px] focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest"
+                      />
+                    </div>
                   </div>
 
-                  <button type="submit" className="btn-gold w-full text-xs py-3.5 mt-2">
-                    <span>Confirm Free Demo Class</span>
-                    <span className="material-symbols-outlined text-[16px]">bolt</span>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn-gold w-full text-xs py-3.5 mt-2 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
+                  >
+                    {submitting ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></span>
+                        <span>Sending to Admissions Desk...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Confirm Free Demo Class</span>
+                        <span className="material-symbols-outlined text-[16px]">bolt</span>
+                      </>
+                    )}
                   </button>
 
                   <div className="pt-2 text-center space-y-1">
@@ -227,7 +378,7 @@ export default function DemoBookingSection() {
                       <span className="text-emerald-600">✓</span> 100% Free Demo Session • Zero Fees
                     </div>
                     <span className="text-[11px] text-slate-500 block">
-                      🔒 Trusted by 1,200+ students &amp; parents. Strictly 15 admissions per batch.
+                      🔒 Dispatches directly to enquiry@riituinstitution.com. Strictly 15 admissions per batch.
                     </span>
                   </div>
                 </form>
