@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+  <!-- 1. Homepage & Admissions Portal -->
+  <url>
+    <loc>https://riituinstitution.com/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://riituinstitution.com/assets/Riitu-Institution-Logo.png</image:loc>
+      <image:title>Riitu Institution - CA Academy Kharghar</image:title>
+      <image:caption>Premier CA Foundation, CA Intermediate and Commerce Academy in Kharghar, Navi Mumbai</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Hyper-Local Kharghar Landing Hub -->
+  <url>
+    <loc>https://riituinstitution.com/ca-coaching-kharghar</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://riituinstitution.com/assets/Riitu-Institution.png</image:loc>
+      <image:title>Riitu Institution Physical Campus Sector 12 Kharghar</image:title>
+      <image:caption>Classroom Center at Landmark CHS, Sector 12 Kharghar, Navi Mumbai</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 3. CA Foundation Micro-Cohort -->
+  <url>
+    <loc>https://riituinstitution.com/ca-foundation</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://riituinstitution.com/assets/ca-g-ohfudgfu.webp</image:loc>
+      <image:title>CA Foundation 15-Student Cohort Coaching</image:title>
+      <image:caption>Comprehensive ICAI CA Foundation exam coaching with 14-day science bridge in Kharghar</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 4. CA Intermediate (G1 & G2) -->
+  <url>
+    <loc>https://riituinstitution.com/ca-intermediate</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://riituinstitution.com/assets/p1-1.jpg</image:loc>
+      <image:title>CA Intermediate Both Groups Coaching</image:title>
+      <image:caption>60%+ CA Intermediate clearance record taught by practicing Fellow Chartered Accountants</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 5. Regional Navi Mumbai Hub -->
+  <url>
+    <loc>https://riituinstitution.com/ca-classes-navi-mumbai</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 6. 11th & 12th Commerce Integrated -->
+  <url>
+    <loc>https://riituinstitution.com/commerce-11th-12th</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. Academic Programs Directory -->
+  <url>
+    <loc>https://riituinstitution.com/courses</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 8. CS Executive & CMA Coaching -->
+  <url>
+    <loc>https://riituinstitution.com/cs-cma</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 9. School Foundations (6th to 10th) -->
+  <url>
+    <loc>https://riituinstitution.com/school-6th-10th</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 10. College Degree Coaching (B.Com / BMS) -->
+  <url>
+    <loc>https://riituinstitution.com/college-bcom-bms</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 11. Faculty Mentors (CA Deepak Jain & CA Ritu Jain) -->
+  <url>
+    <loc>https://riituinstitution.com/our-faculty</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://riituinstitution.com/assets/ritu-pointing-transparent.png</image:loc>
+      <image:title>CA Faculty Mentors at Riitu Institution</image:title>
+      <image:caption>Senior practicing Chartered Accountants with Big 4 backgrounds</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 12. About Us & Institutional Ethos -->
+  <url>
+    <loc>https://riituinstitution.com/about-us</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 13. Admissions & Campus Contact -->
+  <url>
+    <loc>https://riituinstitution.com/contact</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>
