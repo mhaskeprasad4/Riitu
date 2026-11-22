@@ -4,7 +4,7 @@ import GoogleReviewsBadge from './GoogleReviewsBadge';
 
 export default function PhilosophySection() {
   return (
-    <section className="py-20 sm:py-24 bg-white border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-white border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -35,9 +35,9 @@ export default function PhilosophySection() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-[#0B3D2C]/10 border border-[#0B3D2C]/20 text-[#0B3D2C] text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
-                <span className="w-1.5 h-1.5 bg-[#0B3D2C] inline-block"></span>
-                <span>Academic Philosophy &amp; Concept Coaching</span>
+              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-[#0B3D2C]/10 border border-[#0B3D2C]/20 text-[#0B3D2C] text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
+                <span className="w-1.5 h-1.5 bg-[#0B3D2C] inline-block shrink-0"></span>
+                <span className="truncate">Academic Philosophy &amp; Concept Coaching</span>
               </div>
               <GoogleReviewsBadge variant="light" />
             </div>
@@ -105,12 +105,12 @@ export default function PhilosophySection() {
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a href="#demo-booking" className="btn-gold text-xs sm:text-sm px-6 py-3.5 shadow-sm">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <a href="#demo-booking" className="btn-gold text-xs sm:text-sm px-6 py-3.5 shadow-sm text-center justify-center w-full sm:w-auto">
                 <span>Apply for Admission</span>
                 <span className="material-symbols-outlined text-[17px]">arrow_forward</span>
               </a>
-              <Link to="/courses" className="btn-outline-forest text-xs sm:text-sm px-6 py-3.5">
+              <Link to="/courses" className="btn-outline-forest text-xs sm:text-sm px-6 py-3.5 text-center justify-center w-full sm:w-auto">
                 <span className="material-symbols-outlined text-[17px]">school</span>
                 <span>View All Courses</span>
               </Link>
@@ -120,10 +120,10 @@ export default function PhilosophySection() {
 
           {/* Right Column: Visual Frame with Untitled-design-4-1.png */}
           <div className="lg:col-span-5">
-            <div className="relative">
+            <div className="relative overflow-hidden sm:overflow-visible">
               
               {/* Background Geometric Accent */}
-              <div className="absolute -top-3 -right-3 w-full h-full bg-[#D49A18]/15 rounded-[4px] -z-10"></div>
+              <div className="absolute -top-3 right-0 sm:-right-3 w-full h-full bg-[#D49A18]/15 rounded-[4px] -z-10"></div>
               
               {/* Image Container Card */}
               <div className="bg-[#0D1B1E] p-4 sm:p-5 border-2 border-[#0B3D2C] rounded-[4px] shadow-xl text-white">

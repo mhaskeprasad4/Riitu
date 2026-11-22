@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 export default function BentoGrid() {
   return (
-    <section className="py-24 bg-brand-surface border-b border-slate-200">
+    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px]">
-            <span className="w-1.5 h-1.5 bg-brand-forest inline-block"></span>
-            <span>The Expert Mentorship Difference</span>
+          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
+            <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
+            <span className="truncate">The Expert Mentorship Difference</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-900 leading-tight">
             Engineered for First-Attempt Clearance. <br />

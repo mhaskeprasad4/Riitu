@@ -86,7 +86,7 @@ const programs = [
 
 export default function ProgramsGrid() {
   return (
-    <section className="py-20 sm:py-24 bg-[#F8FAF9] border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-[#F8FAF9] border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -113,9 +113,9 @@ export default function ProgramsGrid() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-2">
-              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
+              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
                 <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
-                <span>Academic Programs Directory</span>
+                <span className="truncate">Academic Programs Directory</span>
               </div>
               <GoogleReviewsBadge variant="light" />
             </div>
@@ -168,7 +168,7 @@ export default function ProgramsGrid() {
                   {prog.points.map((pt, pIdx) => (
                     <div key={pIdx} className="flex items-center gap-2.5">
                       <span className="w-1.5 h-1.5 bg-brand-forest rounded-[1px] inline-block shrink-0"></span>
-                      <span>{pt}</span>
+                      <span className="truncate">{pt}</span>
                     </div>
                   ))}
                 </div>

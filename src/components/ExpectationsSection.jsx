@@ -55,7 +55,7 @@ const impactStats = [
 
 export default function ExpectationsSection() {
   return (
-    <section className="py-20 sm:py-24 bg-[#F8FAF9] border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-[#F8FAF9] border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -81,9 +81,9 @@ export default function ExpectationsSection() {
             </div>
           </div>
 
-          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px]">
-            <span className="w-1.5 h-1.5 bg-brand-forest inline-block"></span>
-            <span>Our Approach to Teaching and Learning</span>
+          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
+            <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
+            <span className="truncate">Our Approach to Teaching and Learning</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 leading-tight">
@@ -123,7 +123,7 @@ export default function ExpectationsSection() {
 
               <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center gap-1.5 text-xs text-[#D49A18] font-bold">
                 <span className="w-1.5 h-1.5 bg-[#D49A18] inline-block"></span>
-                <span>The Riitu Standard</span>
+                <span className="truncate">The Riitu Standard</span>
               </div>
             </div>
           ))}

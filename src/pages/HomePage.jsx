@@ -80,7 +80,7 @@ export default function HomePage() {
 
               {/* Eyebrow Row: Verified Micro-Cohort Status + Google Reviews Badge (Exact Height Parity h-[32px]) */}
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-                <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-night/90 border border-brand-gold/40 text-brand-gold text-xs font-sans font-bold tracking-normal sm:tracking-wider uppercase rounded-[3px] shadow-sm shrink-0">
+                <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-night/90 border border-brand-gold/40 text-brand-gold text-xs font-sans font-bold tracking-normal sm:tracking-wider uppercase rounded-[3px] shadow-sm max-w-full">
                   <span className="w-1.5 h-1.5 bg-brand-gold inline-block shrink-0"></span>
                   <span className="truncate">Navi Mumbai • 15-Student CA Cohort</span>
                 </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
               </div>
 
               {/* High-Impact Playfair Display Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-[1.18] sm:leading-[1.14]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-[1.18] sm:leading-[1.14] break-words">
                 Where Future CAs <br />
                 Are <span className="italic font-normal text-brand-gold">Forged</span>, Not Mass-Produced.
               </h1>
@@ -101,20 +101,20 @@ export default function HomePage() {
               </p>
 
               {/* Dual Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-1">
-                <a href="#demo-booking" className="btn-gold text-xs sm:text-sm px-7 py-3.5 shadow-md hover:shadow-lg transition-all">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1 w-full sm:w-auto">
+                <a href="#demo-booking" className="btn-gold text-xs sm:text-sm px-6 sm:px-7 py-3.5 shadow-md hover:shadow-lg transition-all text-center justify-center w-full sm:w-auto">
                   <span>Book Free 1-on-1 Demo Lecture</span>
                   <span className="material-symbols-outlined text-[17px]">arrow_forward</span>
                 </a>
-                <Link to="/courses" className="btn-ghost-dark text-xs sm:text-sm px-6 py-3.5">
+                <Link to="/courses" className="btn-ghost-dark text-xs sm:text-sm px-5 sm:px-6 py-3.5 text-center justify-center w-full sm:w-auto">
                   <span className="material-symbols-outlined text-[17px]">menu_book</span>
                   <span>Explore 2026-27 Cohorts</span>
                 </Link>
               </div>
 
               {/* High-Converting Social Proof Callout: Trusted by 1,200+ Students */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-[3px] text-xs font-sans text-slate-200">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1">
+                <div className="flex flex-wrap items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-[3px] text-xs font-sans text-slate-200 max-w-full">
                   <span className="flex items-center text-[#D49A18] text-xs leading-none">
                     ★★★★★
                   </span>
@@ -172,7 +172,7 @@ export default function HomePage() {
                   {/* SEATS FILLING FAST BADGE WITH ACTIVE PULSE */}
                   <span className="inline-flex items-center gap-1.5 bg-[#D49A18] text-[#0D1B1E] px-2.5 py-1 font-bold tracking-wider text-[10px] rounded-[2px] shadow-xs">
                     <span className="w-1.5 h-1.5 bg-red-600 rounded-none inline-block animate-pulse"></span>
-                    <span>SEATS FILLING FAST</span>
+                    <span className="truncate">SEATS FILLING FAST</span>
                   </span>
                 </div>
 
@@ -220,31 +220,31 @@ export default function HomePage() {
 
           {/* FULL-WIDTH HERO PROOF METRICS BAR (ENHANCED WITH 1200+ TRUSTED STUDENTS) */}
           <div className="border-t border-white/10 pt-8 sm:pt-10 mt-10 lg:mt-14">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-6 font-sans">
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">1,200+</div>
-                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Students Mentored</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">Trusted across Mumbai</span>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3.5 sm:gap-6 lg:gap-6 font-sans">
+              <div className="border-l-2 border-[#D49A18] pl-3 sm:pl-6 min-w-0">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">1,200+</div>
+                <div className="text-[10px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5 truncate">Students Mentored</div>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5 truncate">Trusted across Mumbai</span>
               </div>
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">15 Max</div>
-                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Students / Cohort</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">Strict batch ceiling</span>
+              <div className="border-l-2 border-[#D49A18] pl-3 sm:pl-6 min-w-0">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">15 Max</div>
+                <div className="text-[10px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5 truncate">Students / Cohort</div>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5 truncate">Strict batch ceiling</span>
               </div>
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">60%+</div>
-                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Inter Pass Rate</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">vs ~18% ICAI average</span>
+              <div className="border-l-2 border-[#D49A18] pl-3 sm:pl-6 min-w-0">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">60%+</div>
+                <div className="text-[10px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5 truncate">Inter Pass Rate</div>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5 truncate">vs ~18% ICAI avg</span>
               </div>
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">100%</div>
-                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">CA Mentors</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">Fellow CAs • Zero interns</span>
+              <div className="border-l-2 border-[#D49A18] pl-3 sm:pl-6 min-w-0">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">100%</div>
+                <div className="text-[10px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5 truncate">CA Mentors</div>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5 truncate">Fellow CAs • 0 interns</span>
               </div>
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6 col-span-2 md:col-span-1">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">AIR 25</div>
-                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Rank Experts</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">Proven methodology</span>
+              <div className="border-l-2 border-[#D49A18] pl-3 sm:pl-6 col-span-2 md:col-span-1 min-w-0">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">AIR 25</div>
+                <div className="text-[10px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5 truncate">Rank Experts</div>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5 truncate">Proven methodology</span>
               </div>
             </div>
           </div>

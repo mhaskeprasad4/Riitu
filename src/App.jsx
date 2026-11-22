@@ -33,7 +33,7 @@ export default function App() {
     <ErrorBoundary>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-white overflow-x-hidden w-full max-w-full">
           <Navbar />
           <div className="flex-grow pb-16 lg:pb-0">
             <Routes>

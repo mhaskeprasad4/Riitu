@@ -117,9 +117,9 @@ export default function SchoolPage() {
 
             {/* Badges Row */}
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
+              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
                 <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
-                <span>Classes 6 to 10 • 15 Students Max</span>
+                <span className="truncate">Classes 6 to 10 • 15 Students Max</span>
               </div>
               <GoogleReviewsBadge variant="light" />
             </div>

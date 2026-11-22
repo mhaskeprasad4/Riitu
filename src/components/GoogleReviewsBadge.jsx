@@ -15,7 +15,7 @@ export default function GoogleReviewsBadge({ variant = 'light', className = '' }
         isDark
           ? 'bg-brand-night/95 border border-white/20 text-white hover:border-[#D49A18] shadow-sm'
           : 'bg-white border border-slate-300 text-slate-800 hover:border-[#0B3D2C] shadow-2xs hover:shadow-xs'
-      } rounded-[3px] text-xs font-sans shrink-0 leading-none ${className}`}
+      } rounded-[3px] text-xs font-sans max-w-full leading-none ${className}`}
       title="4.9/5 rating based on 185+ verified Google Reviews for Riitu Institution on Google Maps"
     >
       {/* Official Google G Logo */}

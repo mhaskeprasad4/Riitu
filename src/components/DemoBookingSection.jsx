@@ -150,9 +150,9 @@ export default function DemoBookingSection() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
-              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-emerald-950/70 border border-brand-gold/40 text-brand-gold-light text-xs font-bold tracking-wider uppercase rounded-[3px] shrink-0">
-                <span className="w-1.5 h-1.5 bg-brand-gold inline-block"></span>
-                <span>Trusted by 1,200+ Students • Admissions Open</span>
+              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-2.5 sm:px-3 bg-emerald-950/70 border border-brand-gold/40 text-brand-gold-light text-[11px] sm:text-xs font-bold tracking-normal sm:tracking-wider uppercase rounded-[3px] max-w-full">
+                <span className="w-1.5 h-1.5 bg-brand-gold inline-block shrink-0"></span>
+                <span className="truncate">Trusted by 1,200+ Students • Admissions Open</span>
               </div>
               <GoogleReviewsBadge variant="dark" />
             </div>
@@ -198,7 +198,7 @@ export default function DemoBookingSection() {
 
           {/* Right Column Booking Form with Institution Logo Header */}
           <div className="lg:col-span-5">
-            <div className="bg-white text-brand-charcoal p-5 sm:p-8 md:p-10 shadow-2xl rounded-[4px] border-2 border-slate-200">
+            <div className="bg-white text-brand-charcoal p-4 sm:p-8 md:p-10 shadow-2xl rounded-[4px] border-2 border-slate-200">
               
               {/* Institution Seal in Form Header */}
               <div className="border-b border-slate-200 pb-5 mb-6 flex items-center justify-between gap-4">

@@ -65,19 +65,19 @@ const googleReviews = [
 
 export default function GoogleReviewsSection() {
   return (
-    <section className="py-24 bg-brand-surface border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header with Google Logo & Trust Banner */}
-        <div className="bg-white border border-slate-200 rounded-[4px] p-8 sm:p-10 shadow-sm mb-14">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-white border border-slate-200 rounded-[4px] p-5 sm:p-8 md:p-10 shadow-sm mb-14">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
             
             {/* Left: Google Trust Badging */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
               
               {/* Official Google Icon */}
-              <div className="w-16 h-16 bg-white border border-slate-200 rounded-[4px] shadow-sm p-3 flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 48 48" className="w-10 h-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-slate-200 rounded-[4px] shadow-sm p-3 flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 48 48" className="w-8 h-8 sm:w-10 sm:h-10">
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                   <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                   <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -87,12 +87,12 @@ export default function GoogleReviewsSection() {
 
               {/* Trust Text */}
               <div>
-                <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
                   <span className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">4.9</span>
                   <div className="flex items-center text-amber-500 text-lg">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                   </div>
-                  <span className="text-xs font-bold bg-amber-50 text-amber-900 px-2.5 py-0.5 rounded-[2px] border border-amber-200">
+                  <span className="text-[11px] sm:text-xs font-bold bg-amber-50 text-amber-900 px-2.5 py-0.5 rounded-[2px] border border-amber-200 max-w-full">
                     185+ Google Reviews • Trusted by 1,200+ Students
                   </span>
                 </div>

@@ -55,7 +55,7 @@ const facultyMembers = [
 
 export default function FacultySection() {
   return (
-    <section className="py-24 bg-brand-surface border-b border-slate-200">
+    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -81,9 +81,9 @@ export default function FacultySection() {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-3">
-            <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
+            <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
               <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
-              <span>Senior Mentors &amp; Directors</span>
+              <span className="truncate">Senior Mentors &amp; Directors</span>
             </div>
             <GoogleReviewsBadge variant="light" />
           </div>

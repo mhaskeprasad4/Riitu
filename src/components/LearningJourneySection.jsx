@@ -41,7 +41,7 @@ const journeyStages = [
 
 export default function LearningJourneySection() {
   return (
-    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -67,9 +67,9 @@ export default function LearningJourneySection() {
             </div>
           </div>
 
-          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-[#0B3D2C]/10 border border-[#0B3D2C]/20 text-[#0B3D2C] text-xs font-bold uppercase tracking-wider rounded-[3px]">
-            <span className="w-1.5 h-1.5 bg-[#0B3D2C] inline-block"></span>
-            <span>Comprehensive Student Pathway</span>
+          <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-[#0B3D2C]/10 border border-[#0B3D2C]/20 text-[#0B3D2C] text-xs font-bold uppercase tracking-wider rounded-[3px] max-w-full">
+            <span className="w-1.5 h-1.5 bg-[#0B3D2C] inline-block shrink-0"></span>
+            <span className="truncate">Comprehensive Student Pathway</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 leading-tight">
@@ -86,9 +86,9 @@ export default function LearningJourneySection() {
           
           {/* Left Column: The Live Journey Graphic (Untitled-design-5-1.png) */}
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="relative">
+            <div className="relative overflow-hidden sm:overflow-visible">
               {/* Gold Offset Accent */}
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-[#0B3D2C]/10 rounded-[4px] -z-10"></div>
+              <div className="absolute -bottom-3 left-0 sm:-left-3 w-full h-full bg-[#0B3D2C]/10 rounded-[4px] -z-10"></div>
               
               <div className="bg-white p-4 sm:p-5 border-2 border-slate-200 rounded-[4px] shadow-lg">
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100 text-xs">

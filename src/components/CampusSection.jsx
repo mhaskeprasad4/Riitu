@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CampusSection() {
   return (
-    <section className="py-24 bg-white border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-white border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -29,7 +29,7 @@ export default function CampusSection() {
           </div>
           <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-[10.5px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-wider rounded-[3px] mb-3">
             <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
-            <span>Physical Learning Center • Kharghar</span>
+            <span className="truncate">Physical Learning Center • Kharghar</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-900 leading-tight">
             Visit Our Kharghar Center

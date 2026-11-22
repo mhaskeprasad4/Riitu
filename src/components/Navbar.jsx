@@ -162,22 +162,22 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-4 sm:gap-6">
           
           {/* PROMINENT VISIBLE LOGO & CA ACADEMY SUBTITLE (VISIBLE ON MOBILE & DESKTOP) */}
-          <Link to="/" onClick={closeAllMenus} className="flex items-center gap-2.5 sm:gap-4 group shrink-0">
-            <div className="bg-white p-1 rounded-[4px] border border-slate-200/80 shadow-xs flex items-center justify-center">
+          <Link to="/" onClick={closeAllMenus} className="flex items-center gap-2 sm:gap-4 group min-w-0 max-w-[calc(100%-88px)] lg:max-w-none">
+            <div className="bg-white p-1 rounded-[4px] border border-slate-200/80 shadow-xs flex items-center justify-center shrink-0">
               <img
                 src="/assets/Riitu-Logo-Tight.png"
                 alt="Riitu Institution Official Brand Logo"
-                className="h-10 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-9 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105"
                 onError={(e) => {
                   e.target.src = '/assets/Riitu-Institution-Logo.png';
                 }}
               />
             </div>
-            <div className="border-l-2 border-[#0B3D2C]/25 pl-2.5 sm:pl-3.5">
-              <span className="block text-base sm:text-2xl md:text-3xl font-serif font-bold tracking-tight text-[#0B3D2C] leading-none">
+            <div className="border-l-2 border-[#0B3D2C]/25 pl-2 sm:pl-3.5 min-w-0">
+              <span className="block text-sm sm:text-2xl md:text-3xl font-serif font-bold tracking-tight text-[#0B3D2C] leading-none truncate">
                 Riitu Institution
               </span>
-              <span className="block text-[9px] sm:text-xs md:text-sm font-bold text-[#D49A18] mt-0.5 sm:mt-1 uppercase tracking-wider">
+              <span className="block text-[8.5px] sm:text-xs md:text-sm font-bold text-[#D49A18] mt-0.5 sm:mt-1 uppercase tracking-wider truncate">
                 CA Academy
               </span>
             </div>

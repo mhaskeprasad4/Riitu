@@ -73,7 +73,7 @@ const modes = [
 
 export default function ModesOfTeachingSection() {
   return (
-    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans">
+    <section className="py-20 sm:py-24 bg-brand-surface border-b border-slate-200 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
