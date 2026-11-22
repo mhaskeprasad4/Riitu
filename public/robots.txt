@@ -1,9 +1,74 @@
-# Robots.txt for Riitu Institution (https://riituinstitution.com)
+# Robots.txt for Riitu Institution
+# Official Portal: https://riituinstitution.com
+# Location: Sector 12, Kharghar, Navi Mumbai - 410210
+# Last Updated: 2026-11-22
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /contact.php
+Disallow: /*.json$
 
-# Disallow query parameter duplicates
-Disallow: /*?*
+# Explicit Permissions for Search Engines
+User-agent: Googlebot
+Allow: /
 
-# Sitemap Location
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Explicit Permissions for Generative AI & Answer Engines (AEO)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Canonical Host & Sitemap Locations
+Host: https://riituinstitution.com
 Sitemap: https://riituinstitution.com/sitemap.xml
