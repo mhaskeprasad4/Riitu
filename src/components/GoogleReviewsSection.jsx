@@ -93,14 +93,14 @@ export default function GoogleReviewsSection() {
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                   </div>
                   <span className="text-xs font-bold bg-amber-50 text-amber-900 px-2.5 py-0.5 rounded-[2px] border border-amber-200">
-                    185+ Google Reviews
+                    185+ Google Reviews • Trusted by 1,200+ Students
                   </span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-900">
                   Rated #1 CA &amp; Commerce Academy in Kharghar
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                  Verified feedback from students and parents at our Landmark CHS Sector 12 Kharghar Center.
+                  Trusted by 1,200+ students and parents with verified 5-star ratings at our Landmark CHS Sector 12 Kharghar Center.
                 </p>
               </div>
 

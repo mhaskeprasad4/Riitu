@@ -60,7 +60,7 @@ export default function LiveCTASection() {
 
             {/* Description Subtext */}
             <p className="text-slate-700 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              Experience the 15-student micro cohort advantage. 100% direct mentorship by practicing Fellow Chartered Accountants, 60%+ first-attempt clearance record, and zero-fee demo lectures.
+              Join 1,200+ students who chose personal CA mentorship over mass lecture halls. 100% direct mentorship by practicing Fellow Chartered Accountants, 60%+ first-attempt clearance record, and zero-fee demo lectures.
             </p>
 
             {/* Golden CTA Button + Google Reviews Trust Badge */}
@@ -75,8 +75,12 @@ export default function LiveCTASection() {
               <GoogleReviewsBadge variant="light" />
             </div>
 
-            {/* Reassurance Checklist */}
+            {/* Reassurance Checklist with 1200+ Students Social Proof */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-slate-600 pt-2 font-medium">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-[#D49A18] inline-block rounded-[1px]"></span>
+                <strong className="text-slate-900 font-bold">Trusted by 1,200+ Students</strong>
+              </span>
               <span className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 bg-[#0B3D2C] inline-block rounded-[1px]"></span>
                 Strict 15-Student Micro Batches

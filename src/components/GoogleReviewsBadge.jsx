@@ -6,15 +6,17 @@ export default function GoogleReviewsBadge({ variant = 'light', className = '' }
 
   return (
     <a
-      href="/#reviews"
+      href="https://maps.google.com/?q=Riitu+Institution+Sector+12+Kharghar"
+      target="_blank"
+      rel="noopener noreferrer"
       className={`h-[32px] min-h-[32px] max-h-[32px] box-border ${
         hasDisplayOverride ? '' : 'inline-flex'
       } items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 transition-all group ${
         isDark
           ? 'bg-brand-night/95 border border-white/20 text-white hover:border-[#D49A18] shadow-sm'
           : 'bg-white border border-slate-300 text-slate-800 hover:border-[#0B3D2C] shadow-2xs hover:shadow-xs'
-      } rounded-[3px] text-xs font-sans shrink-0 ${className}`}
-      title="4.9/5 rating based on 185+ verified Google Reviews for Riitu Institution"
+      } rounded-[3px] text-xs font-sans shrink-0 leading-none ${className}`}
+      title="4.9/5 rating based on 185+ verified Google Reviews for Riitu Institution on Google Maps"
     >
       {/* Official Google G Logo */}
       <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center">
@@ -52,7 +54,7 @@ export default function GoogleReviewsBadge({ variant = 'light', className = '' }
         <span className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
           4.9
         </span>
-        <span className={isDark ? 'text-slate-400' : 'text-slate-400'}>•</span>
+        <span className="text-slate-400">•</span>
         <span className={`font-semibold ${isDark ? 'text-[#D49A18]' : 'text-[#0B3D2C]'}`}>
           185+ Reviews
         </span>

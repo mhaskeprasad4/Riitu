@@ -123,7 +123,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#D49A18] rounded-[1px] inline-block shrink-0 animate-pulse"></span>
             <span className="text-slate-200 tracking-wide text-[10.5px] sm:text-xs truncate">
-              <strong className="text-[#FDF8ED] font-bold">AY 2026-27:</strong> Strictly 15 Students Per Cohort • 60%+ CA Clearance
+              <strong className="text-[#FDF8ED] font-bold">AY 2026-27:</strong> Trusted by 1,200+ Students • Strictly 15 Seats • 60%+ CA Clearance
             </span>
           </div>
 

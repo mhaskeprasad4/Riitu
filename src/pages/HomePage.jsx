@@ -78,9 +78,9 @@ export default function HomePage() {
             {/* Left Column: Focused Value Proposition (Cleaned up & Optimized - Redundant Logo Removed) */}
             <div className="lg:col-span-7 space-y-5">
 
-              {/* Eyebrow Row: Verified Micro-Cohort Status + Google Reviews Badge (Exact Height Parity h-8) */}
+              {/* Eyebrow Row: Verified Micro-Cohort Status + Google Reviews Badge (Exact Height Parity h-[32px]) */}
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-                <div className="h-8 box-border inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-night/90 border border-brand-gold/40 text-brand-gold text-[10.5px] sm:text-xs font-sans font-bold tracking-normal sm:tracking-wider uppercase rounded-[3px] shadow-sm shrink-0 max-w-full">
+                <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 bg-brand-night/90 border border-brand-gold/40 text-brand-gold text-xs font-sans font-bold tracking-normal sm:tracking-wider uppercase rounded-[3px] shadow-sm shrink-0">
                   <span className="w-1.5 h-1.5 bg-brand-gold inline-block shrink-0"></span>
                   <span className="truncate">Navi Mumbai • 15-Student CA Cohort</span>
                 </div>
@@ -112,8 +112,30 @@ export default function HomePage() {
                 </Link>
               </div>
 
+              {/* High-Converting Social Proof Callout: Trusted by 1,200+ Students */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-[3px] text-xs font-sans text-slate-200">
+                  <span className="flex items-center text-[#D49A18] text-xs leading-none">
+                    ★★★★★
+                  </span>
+                  <span className="font-bold text-white">Trusted by 1,200+ Students</span>
+                  <span className="text-slate-400">•</span>
+                  <a 
+                    href="https://maps.google.com/?q=Riitu+Institution+Sector+12+Kharghar" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-brand-gold font-semibold hover:underline"
+                  >
+                    185+ Google Reviews (4.9★)
+                  </a>
+                </div>
+                <span className="text-[11px] text-slate-400">
+                  Navi Mumbai's Highest Rated CA Mentorship Center
+                </span>
+              </div>
+
               {/* Reassurance Checklist */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-300 font-medium pt-1">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-300 font-medium pt-0.5">
                 <span className="flex items-center gap-1.5">
                   <span className="text-emerald-400 font-bold">✓</span> Zero Financial Commitment
                 </span>
@@ -196,9 +218,14 @@ export default function HomePage() {
 
           </div>
 
-          {/* FULL-WIDTH HERO PROOF METRICS BAR (MATCHING USER SCREENSHOT) */}
+          {/* FULL-WIDTH HERO PROOF METRICS BAR (ENHANCED WITH 1200+ TRUSTED STUDENTS) */}
           <div className="border-t border-white/10 pt-8 sm:pt-10 mt-10 lg:mt-14">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 font-sans">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-6 font-sans">
+              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">1,200+</div>
+                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Students Mentored</div>
+                <span className="text-[11px] text-slate-400 block mt-0.5">Trusted across Mumbai</span>
+              </div>
               <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">15 Max</div>
                 <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Students / Cohort</div>
@@ -214,10 +241,10 @@ export default function HomePage() {
                 <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">CA Mentors</div>
                 <span className="text-[11px] text-slate-400 block mt-0.5">Fellow CAs • Zero interns</span>
               </div>
-              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6">
+              <div className="border-l-2 border-[#D49A18] pl-4 sm:pl-6 col-span-2 md:col-span-1">
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">AIR 25</div>
                 <div className="text-[11px] sm:text-xs uppercase font-bold text-[#D49A18] tracking-wider mt-1.5">Rank Experts</div>
-                <span className="text-[11px] text-slate-400 block mt-0.5">Proven exam methodology</span>
+                <span className="text-[11px] text-slate-400 block mt-0.5">Proven methodology</span>
               </div>
             </div>
           </div>

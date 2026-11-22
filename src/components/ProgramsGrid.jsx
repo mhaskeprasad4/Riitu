@@ -113,8 +113,8 @@ export default function ProgramsGrid() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-2">
-              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
-                <span className="w-1.5 h-1.5 bg-brand-forest inline-block"></span>
+              <div className="h-[32px] min-h-[32px] max-h-[32px] box-border leading-none inline-flex items-center gap-2 px-3 bg-brand-lightgreen border border-emerald-300 text-brand-forest text-xs font-bold uppercase tracking-wider rounded-[3px] shrink-0">
+                <span className="w-1.5 h-1.5 bg-brand-forest inline-block shrink-0"></span>
                 <span>Academic Programs Directory</span>
               </div>
               <GoogleReviewsBadge variant="light" />
@@ -123,7 +123,7 @@ export default function ProgramsGrid() {
               Select Your Learning Cohort
             </h2>
             <p className="text-slate-600 text-sm sm:text-base mt-1">
-              Every cohort is capped strictly at 15 seats. Book a Free Demo to experience our classroom experts.
+              Trusted by 1,200+ students. Every cohort is capped strictly at 15 seats. Book a Free Demo to experience our classroom experts.
             </p>
           </div>
           <Link to="/courses" className="btn-outline-forest text-xs">

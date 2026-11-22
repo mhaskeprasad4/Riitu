@@ -37,7 +37,12 @@ export default function Footer() {
             </p>
 
             {/* Google Rating Badge in Footer */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-[3px] inline-flex items-center gap-3">
+            <a
+              href="https://maps.google.com/?q=Riitu+Institution+Sector+12+Kharghar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/5 border border-white/10 hover:border-[#D49A18] rounded-[3px] inline-flex items-center gap-3 transition-colors group"
+            >
               <svg viewBox="0 0 48 48" className="w-6 h-6 shrink-0">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                 <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
@@ -48,10 +53,11 @@ export default function Footer() {
                 <div className="flex items-center gap-1.5 text-xs text-white font-bold">
                   <span>4.9 / 5.0</span>
                   <span className="text-amber-400">★★★★★</span>
+                  <span className="text-[10px] text-brand-gold font-normal">• 185+ Reviews</span>
                 </div>
-                <span className="text-[10px] text-slate-400">185+ Verified Google Reviews</span>
+                <span className="text-[10px] text-slate-300 block mt-0.5">Trusted by 1,200+ Students • Google Verified</span>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Column 2: Academic Cohorts */}
