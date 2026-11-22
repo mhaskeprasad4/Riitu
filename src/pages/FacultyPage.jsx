@@ -8,34 +8,65 @@ export default function FacultyPage() {
   const facultySchema = [
     {
       '@type': 'Person',
-      name: 'CA Deepak Jain',
-      jobTitle: 'Co-Founder & Senior CA Faculty',
+      name: 'CA Ritu Jain',
+      jobTitle: 'Founder & Academic Director',
       alumniOf: 'ICAI',
       worksFor: {
         '@type': 'EducationalOrganization',
         name: 'Riitu Institution',
       },
       description:
-        'Fellow Chartered Accountant with 12+ years experience in PwC Statutory Audit and Deloitte Advisory, mentoring CA Foundation and CA Intermediate students.',
+        'Qualified Chartered Accountant with Master’s degree in Commerce and 15+ years of teaching experience in Accounts and Taxation.',
     },
     {
       '@type': 'Person',
-      name: 'CA Ritu Jain',
-      jobTitle: 'Co-Founder & Senior CA Faculty',
+      name: 'CA Deepak Jain',
+      jobTitle: 'Co-Founder & Director',
       alumniOf: 'ICAI',
       worksFor: {
         '@type': 'EducationalOrganization',
         name: 'Riitu Institution',
       },
       description:
-        'Fellow Chartered Accountant with extensive corporate advisory experience at EY Tax Consulting and The Walt Disney Company.',
+        'Chartered Accountant with 20+ years corporate leadership at PwC, Disney, and Star India as Head of Strategy and Global CFO. Mentors Economics, Costing, and Financial Management.',
+    },
+    {
+      '@type': 'Person',
+      name: 'CA Nikita Innani',
+      jobTitle: 'Commerce & Professional Courses Faculty',
+      alumniOf: 'ICAI',
+      description:
+        'Qualified Chartered Accountant with EY Indirect Tax (GST) background and 5+ years experience in CA/CMA coaching.',
+    },
+    {
+      '@type': 'Person',
+      name: 'CA Vinaya Gundecha',
+      jobTitle: 'Commerce Faculty',
+      alumniOf: 'ICAI',
+      description:
+        'Qualified Chartered Accountant with 6+ years experience in commerce subjects including Accounts, Business Studies, and Economics.',
+    },
+    {
+      '@type': 'Person',
+      name: 'CA Sushmita Manda',
+      jobTitle: 'CA Intermediate Faculty',
+      alumniOf: 'ICAI',
+      description:
+        'Chartered Accountant with 5+ years experience in Big 4 Risk & Compliance services, teaching GST, Law, Audit, and EIS-SM.',
     },
     {
       '@type': 'Person',
       name: 'Namrata Gupta',
-      jobTitle: 'Academic Director - School Foundations',
+      jobTitle: 'Academic Mentor – School Foundations',
       description:
-        'M.Sc Gold Medalist with IB curriculum exposure in Canada, leading school foundation programs in Mathematics and Science for Grades 6 to 10.',
+        'B.Sc Computer Science from Mumbai University, mentoring Grades 6-10 in Mathematics, Science, and English across State, CBSE, ICSE, IB, and Cambridge curricula.',
+    },
+    {
+      '@type': 'Person',
+      name: 'CA Prerna Gangwal',
+      jobTitle: 'Commerce Faculty',
+      description:
+        'Commerce faculty with 7+ years teaching experience in Business Studies, Economics, and Accounts with exam-oriented structured drills.',
     },
   ];
 
