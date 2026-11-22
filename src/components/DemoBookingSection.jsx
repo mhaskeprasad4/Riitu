@@ -15,6 +15,8 @@ export default function DemoBookingSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+
+    const web3Key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
     
     const payload = {
       name: formData.name,
@@ -27,27 +29,68 @@ export default function DemoBookingSection() {
 
     let delivered = false;
 
-    // 1. Primary: Direct Hostinger PHP endpoint
-    try {
-      const res = await fetch('/api/contact.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-      if (res.ok) {
-        const json = await res.json().catch(() => null);
-        if (json && json.success) {
-          delivered = true;
+    // 1. Primary Cloud Form API: Web3Forms (delivers directly to enquiry@riituinstitution.com)
+    if (web3Key && web3Key !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      try {
+        const w3Res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: web3Key,
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email || 'Not provided',
+            cohort: formData.cohort,
+            area: formData.area || 'Kharghar / Navi Mumbai',
+            subject: `New Free Demo Booking: ${formData.name} [${formData.cohort.toUpperCase()}]`,
+            from_name: 'Riitu Institution Portal',
+            message: `Free Demo Class Booking Details:
+• Student Name: ${formData.name}
+• Mobile Contact: ${formData.phone}
+• Target Cohort: ${formData.cohort}
+• Area / Location: ${formData.area || 'Kharghar / Navi Mumbai'}
+• Email Address: ${formData.email || 'Not provided'}
+• Submitted Via: Riitu Institution Official Web Portal`
+          })
+        });
+
+        if (w3Res.ok) {
+          const w3Json = await w3Res.json().catch(() => null);
+          if (w3Json && w3Json.success) {
+            delivered = true;
+          }
         }
+      } catch (err) {
+        console.warn('Web3Forms dispatch error:', err);
       }
-    } catch {
-      // Local dev server or direct PHP not found
     }
 
-    // 2. Secondary: Root /contact.php
+    // 2. Secondary: Direct Hostinger PHP API (/api/contact.php)
+    if (!delivered) {
+      try {
+        const res = await fetch('/api/contact.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const json = await res.json().catch(() => null);
+          if (json && json.success) {
+            delivered = true;
+          }
+        }
+      } catch {
+        // Fallback
+      }
+    }
+
+    // 3. Tertiary: Root /contact.php (Hostinger native email fallback)
     if (!delivered) {
       try {
         const res2 = await fetch('/contact.php', {
@@ -65,32 +108,7 @@ export default function DemoBookingSection() {
           }
         }
       } catch {
-        // Fallback
-      }
-    }
-
-    // 3. Fallback: FormSubmit.co background email API to enquiry@riituinstitution.com
-    if (!delivered) {
-      try {
-        await fetch('https://formsubmit.co/ajax/enquiry@riituinstitution.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email || 'Not provided',
-            cohort: formData.cohort,
-            area: formData.area || 'Kharghar / Navi Mumbai',
-            _subject: `New Free Demo Booking: ${formData.name} [${formData.cohort}]`,
-            _template: 'table',
-            _captcha: 'false'
-          })
-        });
-      } catch {
-        // Continue to success screen
+        // Continue to success confirmation
       }
     }
 
