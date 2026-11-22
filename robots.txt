@@ -1,0 +1,9 @@
+# Robots.txt for Riitu Institution (https://riituinstitution.com)
+User-agent: *
+Allow: /
+
+# Disallow query parameter duplicates
+Disallow: /*?*
+
+# Sitemap Location
+Sitemap: https://riituinstitution.com/sitemap.xml
