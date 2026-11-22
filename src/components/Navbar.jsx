@@ -251,6 +251,23 @@ export default function Navbar() {
               </button>
             </div>
 
+            {/* Blog */}
+            <Link
+              to="/blog"
+              onClick={closeAllMenus}
+              onMouseEnter={() => {
+                setCoursesDropdown(false);
+                setAboutDropdown(false);
+              }}
+              className={`py-2 transition-colors ${
+                location.pathname.startsWith('/blog')
+                  ? 'text-[#0B3D2C] font-bold border-b-2 border-[#0B3D2C]'
+                  : 'hover:text-[#0B3D2C]'
+              }`}
+            >
+              Blog
+            </Link>
+
             {/* Contact */}
             <Link
               to="/contact"
@@ -615,6 +632,17 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
+
+            <Link
+              to="/blog"
+              onClick={closeAllMenus}
+              className="py-2 text-sm font-bold text-slate-800 border-b border-slate-100 flex items-center justify-between"
+            >
+              <span>Blog &amp; Knowledge Base</span>
+              <span className="text-[10px] font-bold text-[#D49A18] bg-amber-50 px-2 py-0.5 rounded-[2px] border border-amber-200">
+                12 Articles
+              </span>
+            </Link>
 
             <Link
               to="/contact"

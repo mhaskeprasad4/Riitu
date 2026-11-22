@@ -17,6 +17,8 @@ import CollegePage from './pages/CollegePage';
 import CsCmaPage from './pages/CsCmaPage';
 import KhargharPage from './pages/KhargharPage';
 import NaviMumbaiPage from './pages/NaviMumbaiPage';
+import BlogIndexPage from './pages/BlogIndexPage';
+import BlogPostPage from './pages/BlogPostPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -50,6 +52,8 @@ export default function App() {
               <Route path="/cs-cma" element={<CsCmaPage />} />
               <Route path="/ca-coaching-kharghar" element={<KhargharPage />} />
               <Route path="/ca-classes-navi-mumbai" element={<NaviMumbaiPage />} />
+              <Route path="/blog" element={<BlogIndexPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </div>

@@ -126,6 +126,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/blog" className="hover:text-brand-gold transition-colors font-semibold text-[#D49A18]">
+                  Blog &amp; Exam Strategy
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="hover:text-brand-gold transition-colors">
                   Contact Admissions
                 </Link>
