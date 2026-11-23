@@ -339,9 +339,16 @@ coreRoutes.forEach(route => {
     courseSchema: route.courseSchema
   });
 
-  const outDir = route.path === '/' ? distDir : path.join(distDir, route.path.replace(/^\//, ''));
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+  if (route.path === '/') {
+    fs.writeFileSync(path.join(distDir, 'index.html'), html, 'utf8');
+  } else {
+    const cleanPath = route.path.replace(/^\//, '');
+    const outDir = path.join(distDir, cleanPath);
+    fs.mkdirSync(outDir, { recursive: true });
+    // Write both cleanPath/index.html AND cleanPath.html (avoids Apache 301 trailing slash redirect)
+    fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(distDir, `${cleanPath}.html`), html, 'utf8');
+  }
   count++;
   console.log(`[Pre-render] Generated static HTML for: ${route.path}`);
 });
@@ -387,7 +394,9 @@ blogPosts.forEach(post => {
     ogType: 'article'
   });
 
+  // Write both blog/slug/index.html AND blog/slug.html
   fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+  fs.writeFileSync(path.join(distDir, 'blog', `${post.slug}.html`), html, 'utf8');
   count++;
   console.log(`[Pre-render] Generated static HTML for: ${blogRoutePath}`);
 });
