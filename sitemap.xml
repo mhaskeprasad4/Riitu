@@ -136,4 +136,108 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- 14. Blog & Knowledge Base Directory -->
+  <url>
+    <loc>https://riituinstitution.com/blog</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 15. Blog Post 1: Best CA Coaching in Kharghar -->
+  <url>
+    <loc>https://riituinstitution.com/blog/best-ca-coaching-in-kharghar-navi-mumbai</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 16. Blog Post 2: Prepare for CA Foundation After 12th -->
+  <url>
+    <loc>https://riituinstitution.com/blog/how-to-prepare-for-ca-foundation-after-12th</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 17. Blog Post 3: Science to CA Foundation Bridge Strategy -->
+  <url>
+    <loc>https://riituinstitution.com/blog/science-to-ca-foundation-bridge-strategy</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 18. Blog Post 4: How to Clear CA Intermediate First Attempt -->
+  <url>
+    <loc>https://riituinstitution.com/blog/how-to-clear-ca-intermediate-first-attempt</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 19. Blog Post 5: 11th & 12th Commerce with Integrated CA Foundation -->
+  <url>
+    <loc>https://riituinstitution.com/blog/11th-12th-commerce-with-ca-foundation-integrated</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 20. Blog Post 6: CA vs CS vs CMA Career Comparison -->
+  <url>
+    <loc>https://riituinstitution.com/blog/ca-vs-cs-vs-cma-career-comparison</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 21. Blog Post 7: Big 4 Articleship Preparation Guide -->
+  <url>
+    <loc>https://riituinstitution.com/blog/big-4-articleship-preparation-guide</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 22. Blog Post 8: Maths & Science Foundations Classes 6-10 -->
+  <url>
+    <loc>https://riituinstitution.com/blog/maths-science-foundations-classes-6-to-10-school</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 23. Blog Post 9: ICAI Exam Paper Presentation Tips -->
+  <url>
+    <loc>https://riituinstitution.com/blog/icai-exam-paper-presentation-tips-exemption</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 24. Blog Post 10: B.Com / BMS Degree Alongside CA Prep -->
+  <url>
+    <loc>https://riituinstitution.com/blog/bcom-bms-degree-alongside-ca-prep-mumbai</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 25. Blog Post 11: Why Batch Size Matters in CA Coaching -->
+  <url>
+    <loc>https://riituinstitution.com/blog/why-batch-size-matters-in-ca-coaching</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 26. Blog Post 12: CA Intermediate Costing & Taxation Scoring Tricks -->
+  <url>
+    <loc>https://riituinstitution.com/blog/ca-intermediate-costing-taxation-scoring-tricks</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
