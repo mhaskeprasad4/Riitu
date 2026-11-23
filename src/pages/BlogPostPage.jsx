@@ -5,12 +5,12 @@ import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import { blogPosts } from '../data/blogPosts';
 
 /**
- * Parses markdown inline syntax: [Anchor](url) and **bold**
+ * Parses markdown inline syntax: [Anchor](url), **bold**, and *italic*
  * Renders internal links with <Link> and external links with <a target="_blank" rel="noopener"> (dofollow)
  */
 function renderInlineContent(text) {
   if (!text) return null;
-  const regex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*)/g;
+  const regex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g;
   const parts = text.split(regex);
   return parts.map((part, index) => {
     if (!part) return null;
@@ -49,46 +49,182 @@ function renderInlineContent(text) {
         </strong>
       );
     }
+    if (part.startsWith('*') && part.endsWith('*') && !part.startsWith('**')) {
+      return (
+        <em key={index} className="italic text-slate-800">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
     return part;
   });
 }
 
+function parseSectionContent(content) {
+  if (!content) return [];
+  const lines = content.split('\n');
+  const elements = [];
+  let currentBullets = null;
+  let currentNumbers = null;
+  let currentParagraph = [];
+
+  const flushParagraph = () => {
+    if (currentParagraph.length > 0) {
+      const text = currentParagraph.join(' ').trim();
+      if (text) {
+        if (
+          (text.startsWith('*"') && text.endsWith('"*')) ||
+          (text.startsWith('*“') && text.endsWith('”*'))
+        ) {
+          elements.push({ type: 'quote', text: text.slice(2, -2).trim() });
+        } else {
+          elements.push({ type: 'paragraph', text });
+        }
+      }
+      currentParagraph = [];
+    }
+  };
+
+  const flushBullets = () => {
+    if (currentBullets && currentBullets.length > 0) {
+      elements.push({ type: 'bullet_list', items: currentBullets });
+      currentBullets = null;
+    }
+  };
+
+  const flushNumbers = () => {
+    if (currentNumbers && currentNumbers.length > 0) {
+      elements.push({ type: 'numbered_list', items: currentNumbers });
+      currentNumbers = null;
+    }
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
+    const trimmed = rawLine.trim();
+
+    if (!trimmed) {
+      flushParagraph();
+      flushBullets();
+      flushNumbers();
+      continue;
+    }
+
+    // Check for Subheading: starts and ends with ** (like **Month 1 & 2...**)
+    if (
+      trimmed.startsWith('**') &&
+      trimmed.endsWith('**') &&
+      !trimmed.startsWith('•') &&
+      !/^\d+[\.\)]/.test(trimmed)
+    ) {
+      flushParagraph();
+      flushBullets();
+      flushNumbers();
+      const headingText = trimmed.slice(2, -2).trim();
+      elements.push({ type: 'heading', text: headingText });
+      continue;
+    }
+
+    // Check for Bullet: starts with • or -
+    if (trimmed.startsWith('•') || (trimmed.startsWith('- ') && !trimmed.startsWith('---'))) {
+      flushParagraph();
+      flushNumbers();
+      if (!currentBullets) currentBullets = [];
+      const bulletText = trimmed.replace(/^[•\-]\s*/, '').trim();
+      currentBullets.push(bulletText);
+      continue;
+    }
+
+    // Check for Numbered list item: e.g. "1. ", "2. ", "10. "
+    const numMatch = trimmed.match(/^(\d+)[\.\)]\s+(.*)$/);
+    if (numMatch) {
+      flushParagraph();
+      flushBullets();
+      if (!currentNumbers) currentNumbers = [];
+      currentNumbers.push({ num: numMatch[1], text: numMatch[2].trim() });
+      continue;
+    }
+
+    // Regular text line
+    flushBullets();
+    flushNumbers();
+    currentParagraph.push(trimmed);
+  }
+
+  flushParagraph();
+  flushBullets();
+  flushNumbers();
+
+  return elements;
+}
+
 function renderFormattedSectionContent(content) {
   if (!content) return null;
-  const blocks = content.split('\n\n');
-  return (
-    <div className="text-slate-700 leading-relaxed space-y-4 text-sm sm:text-base">
-      {blocks.map((block, bIdx) => {
-        const trimmed = block.trim();
-        const lines = trimmed.split('\n');
-        const isBulletList =
-          lines.length > 0 &&
-          lines.every(
-            (l) =>
-              l.trim().startsWith('•') ||
-              l.trim().startsWith('-') ||
-              /^\d+\.\s/.test(l.trim())
-          );
+  const elements = parseSectionContent(content);
 
-        if (isBulletList) {
+  return (
+    <div className="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+      {elements.map((el, idx) => {
+        if (el.type === 'heading') {
           return (
-            <ul key={bIdx} className="space-y-2 pl-2 sm:pl-4">
-              {lines.map((line, lIdx) => {
-                const cleanLine = line.replace(/^[•\-\*]\s*|\d+\.\s*/, '').trim();
-                return (
-                  <li key={lIdx} className="flex items-start gap-2.5">
-                    <span className="text-[#D49A18] font-bold text-base leading-none mt-1 shrink-0">•</span>
-                    <span className="leading-relaxed">{renderInlineContent(cleanLine)}</span>
-                  </li>
-                );
-              })}
+            <h3
+              key={idx}
+              className="text-base sm:text-lg font-serif font-bold text-slate-900 mt-7 mb-2 flex items-center gap-2.5 pt-2"
+            >
+              <span className="w-1.5 h-4 bg-[#D49A18] inline-block rounded-[1px] shrink-0"></span>
+              <span>{el.text}</span>
+            </h3>
+          );
+        }
+
+        if (el.type === 'bullet_list') {
+          return (
+            <ul key={idx} className="space-y-2.5 mb-5 pl-2 sm:pl-3">
+              {el.items.map((item, iIdx) => (
+                <li
+                  key={iIdx}
+                  className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700 leading-relaxed"
+                >
+                  <span className="text-[#D49A18] font-bold text-base leading-none mt-1 shrink-0">•</span>
+                  <span className="leading-relaxed">{renderInlineContent(item)}</span>
+                </li>
+              ))}
             </ul>
           );
         }
 
+        if (el.type === 'numbered_list') {
+          return (
+            <ol key={idx} className="space-y-3 mb-5 pl-1 sm:pl-2">
+              {el.items.map((item, iIdx) => (
+                <li
+                  key={iIdx}
+                  className="flex items-start gap-3 text-sm sm:text-base text-slate-700 leading-relaxed"
+                >
+                  <span className="w-6 h-6 rounded-[2px] bg-[#0B3D2C] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    {item.num}
+                  </span>
+                  <div className="leading-relaxed flex-1">{renderInlineContent(item.text)}</div>
+                </li>
+              ))}
+            </ol>
+          );
+        }
+
+        if (el.type === 'quote') {
+          return (
+            <blockquote
+              key={idx}
+              className="my-5 p-4 sm:p-5 bg-[#FBFBFA] border-l-4 border-[#0B3D2C] rounded-[2px] italic text-slate-800 text-sm sm:text-base shadow-2xs"
+            >
+              <p className="leading-relaxed">"{renderInlineContent(el.text)}"</p>
+            </blockquote>
+          );
+        }
+
         return (
-          <p key={bIdx} className="leading-relaxed whitespace-pre-line">
-            {renderInlineContent(block)}
+          <p key={idx} className="leading-relaxed text-slate-700 my-3 text-sm sm:text-base">
+            {renderInlineContent(el.text)}
           </p>
         );
       })}
