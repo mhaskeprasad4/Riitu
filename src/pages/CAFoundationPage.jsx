@@ -4,6 +4,7 @@ import SEOHead from '../components/SEOHead';
 import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import LiveCTASection from '../components/LiveCTASection';
 import DemoBookingSection from '../components/DemoBookingSection';
+import RelatedBlogGuides from '../components/RelatedBlogGuides';
 
 export default function CAFoundationPage() {
   const caFoundationSchema = {
@@ -602,6 +603,18 @@ export default function CAFoundationPage() {
         </section>
 
       </div>
+
+      {/* Related Academic Guides for CA Foundation */}
+      <RelatedBlogGuides
+        slugs={[
+          'how-to-prepare-for-ca-foundation-after-12th',
+          'science-to-ca-foundation-bridge-strategy',
+          'best-ca-coaching-in-kharghar-navi-mumbai',
+        ]}
+        title="Recommended CA Foundation Study Guides & Strategies"
+        subtitle="In-depth roadmap articles, study timetables, and science-bridge tips written by CA Ritu Jain and CA Deepak Jain."
+        badge="Foundation Prep Insights"
+      />
 
       {/* Live CTA Section */}
       <LiveCTASection />

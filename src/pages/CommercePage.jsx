@@ -4,6 +4,7 @@ import SEOHead from '../components/SEOHead';
 import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import LiveCTASection from '../components/LiveCTASection';
 import DemoBookingSection from '../components/DemoBookingSection';
+import RelatedBlogGuides from '../components/RelatedBlogGuides';
 
 export default function CommercePage() {
   const commerceSchema = {
@@ -507,6 +508,18 @@ export default function CommercePage() {
         </section>
 
       </div>
+
+      {/* Related Academic Guides for Commerce */}
+      <RelatedBlogGuides
+        slugs={[
+          '11th-12th-commerce-with-ca-foundation-integrated',
+          'ca-vs-cs-vs-cma-career-comparison',
+          'bcom-bms-degree-alongside-ca-prep-mumbai',
+        ]}
+        title="Recommended Commerce & Career Guides"
+        subtitle="Explore integrated CA preparation roadmaps, career comparisons, and college balancing strategies."
+        badge="Commerce Career Insights"
+      />
 
       {/* Live CTA Section */}
       <LiveCTASection />

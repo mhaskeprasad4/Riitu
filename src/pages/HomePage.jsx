@@ -15,6 +15,7 @@ import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import FaqSection from '../components/FaqSection';
 import LiveCTASection from '../components/LiveCTASection';
 import DemoBookingSection from '../components/DemoBookingSection';
+import RelatedBlogGuides from '../components/RelatedBlogGuides';
 
 const homeFaqSchema = {
   '@type': 'FAQPage',
@@ -335,6 +336,18 @@ export default function HomePage() {
 
       {/* FREQUENTLY ASKED QUESTIONS (ACCORDION WITH 15 QUESTIONS FROM LIVE SITE) */}
       <FaqSection />
+
+      {/* FEATURED BLOG & KNOWLEDGE BASE GUIDES */}
+      <RelatedBlogGuides
+        slugs={[
+          'best-ca-coaching-in-kharghar-navi-mumbai',
+          'how-to-prepare-for-ca-foundation-after-12th',
+          'how-to-clear-ca-intermediate-first-attempt',
+        ]}
+        title="Latest Exam Insights & Preparation Blueprints"
+        subtitle="Authoritative articles on CA exam strategies, syllabus roadmaps, and career guidance by practicing Chartered Accountants."
+        badge="Knowledge Base & Guides"
+      />
 
       {/* LIVE CTA BANNER: Start Your Journey Towards A Successful Commerce Career */}
       <LiveCTASection />

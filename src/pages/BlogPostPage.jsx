@@ -4,6 +4,98 @@ import SEOHead from '../components/SEOHead';
 import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import { blogPosts } from '../data/blogPosts';
 
+/**
+ * Parses markdown inline syntax: [Anchor](url) and **bold**
+ * Renders internal links with <Link> and external links with <a target="_blank" rel="noopener"> (dofollow)
+ */
+function renderInlineContent(text) {
+  if (!text) return null;
+  const regex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*)/g;
+  const parts = text.split(regex);
+  return parts.map((part, index) => {
+    if (!part) return null;
+    if (part.startsWith('[') && part.includes('](') && part.endsWith(')')) {
+      const closingBracket = part.indexOf('](');
+      const label = part.slice(1, closingBracket);
+      const href = part.slice(closingBracket + 2, -1);
+      const isInternal = href.startsWith('/');
+      if (isInternal) {
+        return (
+          <Link
+            key={index}
+            to={href}
+            className="text-[#0B3D2C] font-semibold underline decoration-[#D49A18] decoration-2 underline-offset-2 hover:text-[#D49A18] hover:decoration-[#0B3D2C] transition-colors"
+          >
+            {label}
+          </Link>
+        );
+      }
+      return (
+        <a
+          key={index}
+          href={href}
+          target="_blank"
+          rel="noopener"
+          className="text-[#0B3D2C] font-semibold underline decoration-[#D49A18] decoration-2 underline-offset-2 hover:text-[#D49A18] hover:decoration-[#0B3D2C] transition-colors"
+        >
+          {label}
+        </a>
+      );
+    }
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={index} className="font-bold text-slate-900">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
+function renderFormattedSectionContent(content) {
+  if (!content) return null;
+  const blocks = content.split('\n\n');
+  return (
+    <div className="text-slate-700 leading-relaxed space-y-4 text-sm sm:text-base">
+      {blocks.map((block, bIdx) => {
+        const trimmed = block.trim();
+        const lines = trimmed.split('\n');
+        const isBulletList =
+          lines.length > 0 &&
+          lines.every(
+            (l) =>
+              l.trim().startsWith('•') ||
+              l.trim().startsWith('-') ||
+              /^\d+\.\s/.test(l.trim())
+          );
+
+        if (isBulletList) {
+          return (
+            <ul key={bIdx} className="space-y-2 pl-2 sm:pl-4">
+              {lines.map((line, lIdx) => {
+                const cleanLine = line.replace(/^[•\-\*]\s*|\d+\.\s*/, '').trim();
+                return (
+                  <li key={lIdx} className="flex items-start gap-2.5">
+                    <span className="text-[#D49A18] font-bold text-base leading-none mt-1 shrink-0">•</span>
+                    <span className="leading-relaxed">{renderInlineContent(cleanLine)}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        }
+
+        return (
+          <p key={bIdx} className="leading-relaxed whitespace-pre-line">
+            {renderInlineContent(block)}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function BlogPostPage() {
   const { slug } = useParams();
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
@@ -189,7 +281,7 @@ export default function BlogPostPage() {
                 {post.keyTakeaways.map((point, idx) => (
                   <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
                     <span className="text-[#D49A18] font-bold text-base leading-none mt-0.5">•</span>
-                    <span>{point}</span>
+                    <span>{renderInlineContent(point)}</span>
                   </li>
                 ))}
               </ul>
@@ -232,11 +324,7 @@ export default function BlogPostPage() {
                   {sec.heading}
                 </h2>
 
-                {sec.content && (
-                  <div className="text-slate-700 leading-relaxed space-y-3 whitespace-pre-line text-sm sm:text-base">
-                    {sec.content}
-                  </div>
-                )}
+                {sec.content && renderFormattedSectionContent(sec.content)}
 
                 {/* Render Comparison Table if present */}
                 {sec.table && (

@@ -4,6 +4,7 @@ import SEOHead from '../components/SEOHead';
 import GoogleReviewsBadge from '../components/GoogleReviewsBadge';
 import LiveCTASection from '../components/LiveCTASection';
 import DemoBookingSection from '../components/DemoBookingSection';
+import RelatedBlogGuides from '../components/RelatedBlogGuides';
 
 export default function CAIntermediatePage() {
   const caInterSchema = {
@@ -603,6 +604,18 @@ export default function CAIntermediatePage() {
         </section>
 
       </div>
+
+      {/* Related Academic Guides for CA Intermediate */}
+      <RelatedBlogGuides
+        slugs={[
+          'how-to-clear-ca-intermediate-first-attempt',
+          'ca-intermediate-costing-taxation-scoring-tricks',
+          'big-4-articleship-preparation-guide',
+        ]}
+        title="Recommended CA Intermediate Preparation Guides"
+        subtitle="First-attempt clearance blueprints, scoring shortcuts, and Big 4 articleship interview strategies by our FCA faculty."
+        badge="Intermediate Prep Insights"
+      />
 
       {/* Live CTA Section */}
       <LiveCTASection />
