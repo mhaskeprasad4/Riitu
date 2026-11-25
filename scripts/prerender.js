@@ -206,7 +206,8 @@ function generateHtmlForRoute({
   // Base Organization Schema
   const schemaGraph = [
     {
-      '@type': ['EducationalOrganization', 'LocalBusiness'],
+      '@type': 'LocalBusiness',
+      additionalType: 'https://schema.org/EducationalOrganization',
       '@id': 'https://riituinstitution.com/#organization',
       name: 'Riitu Institution - CA Academy',
       alternateName: 'Riitu Institution Kharghar',
@@ -260,7 +261,11 @@ function generateHtmlForRoute({
   }
 
   if (articleSchema) {
-    schemaGraph.push(articleSchema);
+    if (articleSchema['@graph'] && Array.isArray(articleSchema['@graph'])) {
+      schemaGraph.push(...articleSchema['@graph']);
+    } else {
+      schemaGraph.push(articleSchema);
+    }
   }
 
   const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': schemaGraph });

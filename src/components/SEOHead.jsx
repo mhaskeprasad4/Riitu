@@ -73,11 +73,38 @@ export default function SEOHead({
     canonicalLink.setAttribute('href', canonicalUrl);
 
     // 7. Base EducationalOrganization + LocalBusiness Schema.org JSON-LD
+    const extraNodes = [];
+
+    // Google Search Central strictly requires at least 2 breadcrumb items for a valid trail
+    if (breadcrumbs && breadcrumbs.length > 1) {
+      extraNodes.push({
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((crumb, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: crumb.name,
+          item: `https://riituinstitution.com${crumb.path}`,
+        })),
+      });
+    }
+
+    // Unpack page-specific schemas properly if they have '@graph'
+    if (schema) {
+      if (schema['@graph'] && Array.isArray(schema['@graph'])) {
+        extraNodes.push(...schema['@graph']);
+      } else if (Array.isArray(schema)) {
+        extraNodes.push(...schema);
+      } else {
+        extraNodes.push(schema);
+      }
+    }
+
     const baseOrganizationSchema = {
       '@context': 'https://schema.org',
       '@graph': [
         {
-          '@type': ['EducationalOrganization', 'LocalBusiness'],
+          '@type': 'LocalBusiness',
+          additionalType: 'https://schema.org/EducationalOrganization',
           '@id': 'https://riituinstitution.com/#organization',
           name: 'Riitu Institution - CA Academy',
           alternateName: 'Riitu Institution Kharghar',
@@ -138,20 +165,7 @@ export default function SEOHead({
             { '@type': 'AdministrativeArea', name: 'Mumbai' },
           ],
         },
-        ...(breadcrumbs && breadcrumbs.length > 0
-          ? [
-              {
-                '@type': 'BreadcrumbList',
-                itemListElement: breadcrumbs.map((crumb, idx) => ({
-                  '@type': 'ListItem',
-                  position: idx + 1,
-                  name: crumb.name,
-                  item: `https://riituinstitution.com${crumb.path}`,
-                })),
-              },
-            ]
-          : []),
-        ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
+        ...extraNodes,
       ],
     };
 

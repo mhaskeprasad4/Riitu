@@ -64,7 +64,7 @@ export default function HomePage() {
         description="Join Navi Mumbai's premier 15-student micro cohort CA academy in Sector 12 Kharghar. Taught 100% by practicing Fellow Chartered Accountants (ex-PwC, Deloitte, Disney). 60%+ CA Inter pass rate. Book a free demo lecture today."
         canonicalPath="/"
         schema={homeFaqSchema}
-        breadcrumbs={[{ name: 'Home', path: '/' }]}
+        breadcrumbs={null}
       />
       {/* HUMAN-CRAFTED EDITORIAL HERO SECTION WITH FULL-WIDTH PROOF METRICS BAR */}
       <section className="relative pt-12 pb-14 lg:pt-16 lg:pb-20 bg-brand-deep text-white border-b border-white/10 overflow-hidden font-sans">
